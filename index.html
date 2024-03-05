@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-image: linear-gradient(to right,#1c0975,#b2dcec);
+        }
+        .main{
+            display: flex;
+            justify-content: center;
+            margin-top: 20%;
+        }
+        .btn1{
+            padding: 10px 20px;
+            margin-right: 40px;
+        }
+        .btn2{
+            padding: 10px 20px;
+        }
+        .color{
+            text-align: center;
+            width: 500px;
+            margin: 0 auto;
+        }
+        .background{
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 10px;
+            font-size: 30px;
+            cursor: pointer;
+            /* display: inline-block; */
+            
+        }
+    </style>
+</head>
+<body>
+
+ <section>
+    
+      <div class="main">
+           <button class="btn1">#ffffff</button>
+           <button class="btn2">#000000</button>
+        </div>
+        <h2 style="text-align: center;color: #fff;">Copy the text</h2>
+       <div class="color">
+        <p class="background">background-image: linear-gradient(to right,#1c0975,#b2dcec);
+       </div>
+       
+        </p>
+ </section>
+ <script>
+    let btn1 = document.querySelector(".btn1");
+    let btn2 = document.querySelector(".btn2");
+    let background = document.querySelector(".background");
+    let btnOne = "#fff";
+    let btnTwo = "#000";
+
+    const changeColor = ()=>{
+        let color = "#";
+        let haxCode = "0123456789abcdef";
+        for(let i = 1; i<= 6;i++){
+           color =  color + haxCode[Math.floor(Math.random()*16)];
+        }
+        return color;
+    }
+
+    const handleChange = ()=>{
+        btnOne = changeColor();
+        console.log(btnOne);
+        document.body.style.backgroundImage = `linear-gradient(to right,${btnOne},${btnTwo})`
+        btn1.textContent = btnOne;
+        background.innerHTML = `background-image:linear-gradient(to right,${btnOne},${btnTwo})`
+    }
+    const handleChangeTwo = ()=>{
+        btnTwo = changeColor();
+        console.log(btnTwo);
+        document.body.style.backgroundImage = `linear-gradient(to right,${btnOne},${btnTwo})`
+        btn2.textContent = btnTwo;
+        background.innerHTML = `background-image:linear-gradient(to right,${btnOne},${btnTwo})`
+    }
+    background.addEventListener("click",function(){
+        navigator.clipboard.writeText(background.innerText)
+    })
+    // background.innerText = `background-image:linear-gradient(to right,${btnOne},${btnTwo})`
+
+
+    btn1.addEventListener("click",handleChange)
+    btn2.addEventListener("click",handleChangeTwo)
+ </script>
+
+</body>
+</html>
